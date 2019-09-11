@@ -1,0 +1,1040 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="bubbleCloudTest">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <title>page Demo</title> -->
+
+     <!-- Custom fonts for this template-->
+    <link href="{% static 'polls/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story:400" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'polls/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static '/polls/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'polls/css/sb-admin.css' %}" rel="stylesheet">
+    <link href="{% static 'polls/css/custom.css' %}" rel="stylesheet">
+
+
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css?hcode=be5162d915534272a57d0bb781d27f2b"
+          type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css?hcode=be5162d915534272a57d0bb781d27f2b"
+          type="text/css" rel="stylesheet">
+
+    <script src="{% static 'polls/js/bootstrap-select.min.js' %}"></script>
+
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 550px;
+        }
+    </style>
+
+    <style>
+        #related {
+            width: 100%;
+            height: 100%;
+            font-family:'Poor Story';
+            font-weight: 400;
+        }
+    </style>
+
+    <style type="text/css">
+        #bullet {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <style>
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+</head>
+
+<body id="page-top">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <!-- <a class="navbar-brand mr-1" href="index.html">Page Demo</a> -->
+
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+        </div>
+    </form>
+
+    
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <!-- <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger">9+</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <span class="badge badge-danger">7</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li> -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false" onclick="location.href='http://127.0.0.2:8000/admin/'">
+                <i class="fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<style> 
+    
+</style>
+
+
+<!-- 헤더부분 -->
+<header class="masthead" style="background-image: url('../../static/polls/img/home-bg.jpg')">   
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1 class="site-title">소셜 네트워크 및 쇼핑몰 감정분석</h1>
+                <span class="subheading site-title">SNS and Shopping Mall Sentiment Analysis</span>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 헤더 검색창 -->
+        <section class="search-sec">
+                <div class="container">
+                    <form action="#" method="post" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                        <input id='input-search' type="text" class="form-control search-slt" placeholder="Enter your interest..." name = "keyword">
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                        </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                        <select class="form-control search-default" id='media' name ='media'>
+                                            <option value="musinsa">Musinsa Store</option>
+                                            <option value="instagram">Instagram</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                        <button type="button" id="button1" class="btn btn-danger wrn-btn js-scroll-trigger" href="#wrapper" onclick="Search1()">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </section>
+</header>
+
+
+
+<div id="wrapper" name="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div class="container-fluid">
+            </br>
+            </br>
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                </div> -->
+
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-2">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <!-- <i class="fas fa-chart-area"></i>
+                                    언급량 -->
+                                    <h6 id="mentionTitle" name="mentionTitle" class="m-0 font-weight-bold chart-title">언급량-None</h6>
+
+                                    <select name="year1" id="year1" onchange="dataAnalysis()">
+                                            <option value="2019" selected="selected">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+    
+                                <div class="card-body" style="display:block">
+                                    
+                                    <div class="chart-area">
+                                        <!-- <div id="mentionChart" width="100%" height="30" href=""></div> -->
+                                        <canvas id="mentionChart" name = "mentionChart" width="100%" height="30" href=""></canvas>
+                                    </div>    
+                                </div>
+    
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">언급량 분석차트</font></b>는 검색한 키워드가 연도별로 SNS의 게시물 또는 쇼핑몰 리뷰에 얼마나 언급되었는지 나타냅니다. <b><font size="3em" color="#99ccff">X축은 언급량</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 해당연도에 어떤 키워드가 많이 언급되었는지 확인해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>
+                                
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-xl-4 col-lg-2">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <!-- <i class="fas fa-chart-area"></i>
+                                    긍정-부정 -->
+                                    <h6 id="sentimentTitle" name="sentimentTitle" class="m-0 font-weight-bold chart-title">긍/부정-None</h6>
+                                    <select name="year2" id="year2" onchange="dataSentiment1();">
+                                            <option value="2019" selected="selected">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+    
+                                <div class="card-body" style="display:block">
+                                    
+    
+                                    <canvas id="pos-negChart" width="100%" height="30" href=""></canvas>
+    
+                                </div>
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">긍/부정 분석차트</font></b>는 연도별로 검색한 키워드가 포함된 SNS의 게시물 또는 쇼핑몰 리뷰가 긍정인지 부정인지 나타냅니다. <b><font size="3em" color="#99ccff">X축은 게시물수</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 연도에 따라 키워드에 대한 사람들의 반응을 확인해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-2">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <!-- <i class="fas fa-chart-area"></i>
+                                        세부 분석 -->
+                                        <h6 id="detailTitle" name="detailTitle" class="m-0 font-weight-bold chart-title">세부분석-None</h6>
+                                        <select name="options" id="options" onchange="dataSentiment2()">
+                                                <option value="color" selected="selected">색</option>
+                                                <option value="size">사이즈</option>
+                                                <option value="price">가격</option>
+                                        </select>
+                                    </div>
+                                    <div class="loader">
+                                    </div>
+        
+                                    <div class="card-body" style="display:block">
+                                        
+                                        <canvas id="optionsChart" width="100%" height="30" href=""></canvas>
+                                    </div>
+                                    <div class="card-footer small text-muted">
+                                            <div class="row">
+                                                <div style=margin-left:10px;></div>
+                                                Updated yesterday at 11:59 PM
+                                                <div class="help-tip">
+                                                    <p><b><font size="3em" color="#99ccff">세부분석차트</font></b>는 연도별로 검색한 키워드의 데이터 중 선택한 카테고리에 해당하는 데이터만 추출하여 긍정/부정 분석결과를 나타냅니다. <b><font size="3em" color="#99ccff">X축은 게시물수</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 카테고리별로 분석해보세요 :-)</p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+    
+                <!-- -->
+    
+                <div class="container-fluid">
+                    <div class="row tops">
+                        <div class="col-xl-6 col-lg-5">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <!-- <i class="fas fa-chart-area"></i>
+                                    연관어 -->
+                                    <h6 id="associateTitle" name="associateTitle" class="m-0 font-weight-bold chart-title">연관어-None</h6>
+                                    <select name="year3" id="year3" onchange="dataAssociation()">
+                                        <option value="2019" selected="selected">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+
+                                <div class="card-body out" style="display:block">
+
+                                    <div id="related" class="in"></div>
+                                    <!-- 크기를 같게 하기 위한 여백 -->
+                                    <!-- </br>
+                                    </br>
+                                    </br> -->
+                                </div>
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">연관어 분석차트</font></b>는 검색한 키워드가 포함된 SNS의 게시물 또는 쇼핑몰 리뷰에서 <b><font size="3em" color="#99ccff">키워드와 연관된 단어를 추출</font></b>하여 나타냅니다. 관심있는 키워드의 연관어가 무엇인지 확인해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="col-xl-6 col-lg-5">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <!-- <i class="fas fa-chart-area"></i>
+                                        연관어 빈도차트 -->
+                                        <h6 id="associateTitle2" name="associateTitle2" class="m-0 font-weight-bold chart-title">연관어 빈도-None</h6>
+                                        <!-- 연관어 그래프에서 연도 변경시, 이 차트도 변경-->
+                                    </div>
+                                    <div class="loader">
+                                    </div>
+
+                                    <div class="card-body chart-font" id="chart" style="display:block">
+                                    <!-- 빈도 차트 -->
+                                    <!-- bullet.js에서 출력 -->
+                                    </div>
+                                    
+                                    <div class="card-footer small text-muted">
+                                            <div class="row">
+                                                <div style=margin-left:10px;></div>
+                                                Updated yesterday at 11:59 PM
+                                                <div class="help-tip">
+                                                    <p><b><font size="3em" color="#99ccff">연관어 빈도 수 차트</font></b>는 검색한 키워드와 연관된 단어를 추출할 때 <b><font size="3em" color="#99ccff">가장 많이 추출된 10개 단어</font></b>와 <b><font size="3em" color="#99ccff">추출 횟수</font></b>를 나타냅니다. 관심있는 키워드의 연관어 순위를 확인해보세요 :-)</p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+    
+                <!-- -->
+                </br>
+                </br>
+                <!-- Call to Action -->
+                <section class="call-to-action text-white text-center">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-9 mx-auto">
+                                <h1 class="mb-4 mid-title">검색 키워드 비교 분석</h1>
+                                <h5 class="mb-4 sub-title">Compare and analyze keywords with other keywords</h5>
+                            </div>
+                            <div class="col-md-10 col-lg-8 col-xl-8 mx-auto">
+                                <!-- <form> -->
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                            <input id="input-search2" type="text" class="form-control form-control-lg" placeholder="Enter other keywords..." name="keyword">
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <button type="button" class="btn btn-block btn-lg btn-primary" onclick="Search2()">Search!</button>
+                                        </div>
+                                    </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </br>
+                </br>
+    
+                <!-- -->
+                
+                </br>
+    
+                <!-- -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-2" >
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 id="mentionTitle2" name="mentionTitle2" class="m-0 font-weight-bold chart-title">언급량-None</h6>
+                                    <select name="year4" id="year4" onchange="compareDataAnalysis()">
+                                            <option value="2019" selected="selected">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+                        
+                                <div class="card-body" style="display:block">
+                                    <canvas id="compareMention" name = "compareMention" width="100%" height="30" href=""></canvas>
+                                </div>
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">언급량 비교분석 차트</font></b>는 수집한 데이터 중 검색한 두 키워드가 언급된 SNS의 게시물 또는 쇼핑몰 리뷰의 수를 나타냅니다. <b><font size="3em" color="#99ccff">X축은 언급량</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 두 키워드에 대한 사람들의 관심을 비교해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-2">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <!-- <i class="fas fa-chart-area"></i>
+                                    긍정 -->
+                                    <h6 id="posTitle" name="posTitle" class="m-0 font-weight-bold chart-title">긍정-None</h6>
+                                    <select name="year5" id="year5" onchange="compareDataSentiment1()">
+                                            <option value="2019" selected="selected">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+    
+                                <div class="card-body" style="display:block">
+                                    
+    
+                                    <canvas id="posChart" width="100%" height="30" href=""></canvas>
+                                </div>
+    
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">긍정 비교분석 차트</font></b>는 검색한 두 키워드가 포함된 SNS의 게시물 또는 쇼핑몰 리뷰의 긍정적인 반응을 나타냅니다. <b><font size="3em" color="#99ccff">X축은 게시물수</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 두 키워드에 대한 사람들의 긍정적인 반응을 비교해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-xl-4 col-lg-2">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <!-- <i class="fas fa-chart-area"></i>
+                                    부정 -->
+                                    <h6 id="negTitle" name="negTitle" class="m-0 font-weight-bold chart-title">부정-None</h6>
+                                    <select name="year6" id="year6" onchange="compareDataSentiment2()">
+                                            <option value="2019" selected="selected">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="loader">
+                                </div>
+    
+                                <div class="card-body" style="display:block">
+                                    
+    
+                                    <canvas id="negChart" width="100%" height="30" href=""></canvas>
+    
+                                </div>
+                                <div class="card-footer small text-muted">
+                                        <div class="row">
+                                            <div style=margin-left:10px;></div>
+                                            Updated yesterday at 11:59 PM
+                                            <div class="help-tip">
+                                                <p><b><font size="3em" color="#99ccff">부정 비교분석 차트</font></b>는 검색한 두 키워드가 포함된 SNS의 게시물 또는 쇼핑몰 리뷰의 부정적인 반응을 나타냅니다. <b><font size="3em" color="#99ccff">X축은 게시물수</font></b>, <b><font size="3em" color="#99ccff">Y축은 월</font></b>을 의미합니다. 두 키워드에 대한 사람들의 부정적인 반응을 비교해보세요 :-)</p>
+                                            </div>
+                                        </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+
+    </div>
+    
+
+</div>
+<!-- /.content-wrapper -->
+<!-- Clients -->
+<div class="col-lg-12 text-center">
+    <h2 class="section-heading text-uppercase">Medias</h2>
+    <h3 class="section-subheading text-muted">소셜네트워크 및 쇼핑몰 빅데이터 수집 매체입니다.</h3>
+</div>
+<section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <!-- <a href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'polls/img/instagram.jpg' %}" alt="">
+              </a> -->
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <a href="https://www.instagram.com/?hl=ko">
+                <img class="img-fluid d-block mx-auto" src="{% static 'polls/img/instagram.jpg' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <a href="https://store.musinsa.com/app/">
+                <img class="img-fluid d-block mx-auto" src="{% static 'polls/img/musinsa.jpg' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <!-- <a href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'polls/img/creative-market.jpg' %}" alt="">
+              </a> -->
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
+<!-- Footer -->
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">Copyright &copy; 2019 - All rights reserved</div>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'polls/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'polls/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'polls/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="{% static 'polls/vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'polls/vendor/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'polls/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'polls/js/sb-admin.min.js' %}"></script>
+
+<!-- Demo scripts for this page-->
+<script src="{% static 'polls/js/demo/datatables-demo.js' %}"></script>
+<script src="{% static 'polls/js/demo/mentionChart.js' %}"></script>
+<script src="{% static 'polls/js/demo/pos_negChart.js' %}"></script>
+<script src="{% static 'polls/js/demo/optionsChart.js' %}"></script>
+<script src="{% static 'polls/js/demo/compareMention.js' %}"></script>
+<script src="{% static 'polls/js/demo/posChart.js' %}"></script>
+<script src="{% static 'polls/js/demo/negChart.js' %}"></script>
+
+<script src="{% static 'polls/js/jquery.js' %}"></script>
+<script src="{% static 'polls/js/bootstrap.js' %}"></script>
+
+<script src="{% static 'polls/js/d3.js' %}"></script>
+<script src="{% static 'polls/js/c3.js' %}"></script>
+
+<script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="{% static 'polls/js/c3.min.js' %}"></script>
+
+<script src="{% static 'polls/js/app.js' %}"></script>
+<script src="{% static 'polls/js/demo/bullet.js' %}"></script>
+<script src="{% static 'polls/js/demo/related.js' %}"></script>
+
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script type="text/javascript">
+    var keyword = ""; // 키워드
+    var compareKeyword = ""; // 비교 키워드
+    var media = ""; // 선택한 매체
+    var isSearch2 = false;
+
+    window.onload = function () {
+        dataAssociation();
+        dataAnalysis();
+        dataSentiment1();
+        dataSentiment2();
+        compareDataAnalysis();
+        compareDataSentiment1();
+        compareDataSentiment2();
+    }
+
+    function Search1() { // 검색 함수
+        keyword = document.getElementById('input-search').value;
+        var selectedOptions = document.getElementById('media');
+        media = selectedOptions.options[selectedOptions.selectedIndex].value;
+
+        if(keyword == ""){
+            alert_warning();
+            return;
+        }
+
+        processEvent();
+        
+        //차트 이름 바꿔줌
+        $('#mentionTitle').text('언급량-'+keyword);
+        $('#sentimentTitle').text('긍/부정-'+keyword);
+        $('#detailTitle').text('세부분석-'+keyword);
+        $('#associateTitle').text('연관어-'+keyword);
+        $('#associateTitle2').text('연관어 빈도-'+keyword);
+        
+        dataAssociation();
+        dataAnalysis();
+        dataSentiment1();
+        dataSentiment2();
+    }
+
+    function Search2() { // 키워드 비교 검색 함수
+        compareKeyword = document.getElementById('input-search2').value;
+
+        if(keyword == "" || compareKeyword == ""){
+            alert_warning();
+            return;
+        }
+
+        processEvent();
+
+        $('#posTitle').text('긍정-'+keyword+' | '+compareKeyword);
+        $('#negTitle').text('부정-'+keyword+' | '+compareKeyword);
+        $('#mentionTitle2').text('언급량-'+keyword+'|'+compareKeyword);
+
+        compareDataAnalysis();
+        compareDataSentiment1();
+        compareDataSentiment2();
+    }
+
+    function dataAnalysis() { // 연관어
+        var mention = [];
+
+        var selectedYear = document.getElementById("year1");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_mention %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year) {
+                mention.push("{{musinsa.mentions}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_mention %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year) {
+                mention.push("{{instagram.mentions}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+        lineChart(year, mention);
+    }
+
+    function dataSentiment1() { // 긍/부정
+        var pos = [];
+        var neg = [];
+
+        var selectedYear = document.getElementById("year2");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year && "{{musinsa.category}}" == "no") {
+                pos.push("{{musinsa.pos}}");
+                neg.push("{{musinsa.neg}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year && "{{instagram.category}}" == "no") {
+                pos.push("{{instagram.pos}}");
+                neg.push("{{instagram.neg}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+        lineChart2(year, pos, neg);
+    }
+
+    function dataAssociation() { // 언급량
+        var associations = [];
+        var frequency = [];
+
+        var selectedYear = document.getElementById("year3");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_association %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year) {
+
+                associations.push("{{musinsa.association}}");
+                frequency.push("{{musinsa.frequency}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_association %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year) {
+
+                associations.push("{{instagram.association}}");
+                frequency.push("{{instagram.frequency}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+        related(year,associations,frequency);
+        bullet(year,associations,frequency);
+    }
+
+
+    function dataSentiment2() { // 세부분석
+        var pos = [];
+        var neg = [];
+
+        var selectedOptions = document.getElementById("options");
+        var Selected = selectedOptions.options[selectedOptions.selectedIndex].text;
+        var options = selectedOptions.options[selectedOptions.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.category}}" == options && "{{musinsa.year}}" == 2019) {
+                pos.push("{{musinsa.pos}}");
+                neg.push("{{musinsa.neg}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.category}}" == options && "{{instagram.year}}" == 2019) {
+                pos.push("{{instagram.pos}}");
+                neg.push("{{instagram.neg}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+
+        lineChart3(Selected, pos, neg);
+    }
+
+    function compareDataAnalysis() { // 키워드 비교, 언급량
+        var mention = [];
+        var mention2 = [];
+
+        var selectedYear = document.getElementById("year4");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_mention %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year) {
+                mention.push("{{musinsa.mentions}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_mention %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year) {
+                mention.push("{{instagram.mentions}}");
+            }
+            {% endfor %}
+        }
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_mention %}
+            if ("{{musinsa.keyword}}" == compareKeyword && "{{musinsa.year}}" == year) {
+                mention2.push("{{musinsa.mentions}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_mention %}
+            if ("{{instagram.keyword}}" == compareKeyword && "{{instagram.year}}" == year) {
+                mention2.push("{{instagram.mentions}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+
+        lineChart4(year, mention, mention2);
+    }
+
+    function compareDataSentiment1() { // 키워드 비교, 긍정
+        var pos = [];
+        var pos2 = [];
+
+        var selectedYear = document.getElementById("year5");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year && "{{musinsa.category}}" == "no") {
+                pos.push("{{musinsa.pos}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year && "{{instagram.category}}" == "no") {
+                pos.push("{{instagram.pos}}");
+            }
+            {% endfor %}
+        }
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == compareKeyword && "{{musinsa.year}}" == year && "{{musinsa.category}}" == "no") {
+                pos2.push("{{musinsa.pos}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == compareKeyword && "{{instagram.year}}" == year  && "{{instagram.category}}" == "no") {
+                pos2.push("{{instagram.pos}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+
+        lineChart5(year, pos, pos2);
+    }
+
+    function compareDataSentiment2() { // 키워드 비교, 부정
+        var neg = [];
+        var neg2 = [];
+
+        var selectedYear = document.getElementById("year6");
+        var year = selectedYear.options[selectedYear.selectedIndex].value;
+
+        _showLoader();
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == keyword && "{{musinsa.year}}" == year && "{{musinsa.category}}" == "no") {
+                neg.push("{{musinsa.neg}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == keyword && "{{instagram.year}}" == year && "{{instagram.category}}" == "no") {
+                neg.push("{{instagram.neg}}");
+            }
+            {% endfor %}
+        }
+
+        if (media == "musinsa") {
+            {% for musinsa in musinsa_sentiment %}
+            if ("{{musinsa.keyword}}" == compareKeyword && "{{musinsa.year}}" == year && "{{musinsa.category}}" == "no") {
+                neg2.push("{{musinsa.neg}}");
+            }
+            {% endfor %}
+        }
+        else if (media == "instagram") {
+            {% for instagram in instagram_sentiment %}
+            if ("{{instagram.keyword}}" == compareKeyword && "{{instagram.year}}" == year  && "{{instagram.category}}" == "no") {
+                neg2.push("{{instagram.neg}}");
+            }
+            {% endfor %}
+        }
+
+        _showPage();
+
+        lineChart6(year, neg, neg2);
+    }
+
+    function getXMLHttpRequest() {
+        if (window.ActiveXObject) {
+            try {
+                return new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    return new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e1) {
+                    return null;
+                }
+            }
+        }
+        else if (window.XMLHttpRequest) {
+            return new XMLHttpRequest();
+        } else {
+            return null;
+        }
+    }
+
+    var httpRequest = null;
+
+    function processEvent() {
+
+        // GET요청 크롤러
+        var Server = "http://127.0.0.1:5000/save/" + media + "/" + keyword;
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open("GET", Server, true);
+        httpRequest.send();
+        
+        // POST요청 - 분석시작
+        httpRequest = null;
+        httpRequest = new XMLHttpRequest();
+        Server = "http://127.0.0.2:8080/";
+        if(isSearch2){
+            var params = 'keyword='+compareKeyword+'&amp;media='+media
+            isSearch2 = false;
+        }else{
+            var params = 'keyword='+keyword+'&amp;media='+media
+        }
+        httpRequest.open("POST", Server, true);
+        httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        httpRequest.send(params);
+    }
+    var _showLoader = function() {
+        var loader = $("div.loader");
+        var container = $("div.card-body");
+        loader.css("display","block");
+        container.css("display","none");
+    };
+
+    var _showPage = function() {
+        var loader = $("div.loader");
+        var container = $("div.card-body");
+        loader.css("display","none");
+        container.css("display","block");
+    };
+    // 로딩바
+
+    function alert_dialog(key,arr1,arr2){
+        var isEmpty = function (value) {
+            if (value == "" || value == null || value == undefined || (value != null && typeof value == "object" && !Object.keys(value).length)) {
+                return true
+            } else {
+                return false
+            }
+        };
+        if(!(isEmpty(key)) && (isEmpty(arr1) || isEmpty(arr2))){
+            swal({
+                title: "Sorry, We have no data...",
+                text: "검색하신 키워드의 데이터는 아직 수집되지 않았습니다. ",
+                icon: "warning",
+                // buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    swal({
+                        title: "Please, Waiting for update!",
+                        text: "검색하신 키워드가 데이터 수집 서버로 전송되었습니다:-)",
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+                            // swal("데이터를 찾을 수 없습니다!", "검색하신 키워드의 데이터 수집 이후 업데이트 됩니다.");
+        }
+    }
+    // 데이터가 DB에 없을시 출력
+
+    function alert_warning(){
+        swal({
+            title: "Warning!",
+            text: "검색어를 입력해주세요!",
+            icon: "warning",
+            button: "Okay!",
+        });
+    }
+
+</script>
+</body>
+
+</html>

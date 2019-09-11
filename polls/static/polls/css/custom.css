@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css?family=Sunflower:500');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon:400');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Poor+Story:400');
+
+/* 헤더 CSS */
+header.masthead {
+    width: 100%;
+    height: 532px;
+    /* margin-bottom: 50px; */
+    background: no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    background-color: #868e96;
+    position: relative;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    padding: 200px 0 150px;
+    color: white;
+    /* @media only screen and (min-width: 768px) {
+        padding: 200px 0;
+    } */
+  }
+  .page-heading,
+  .site-heading {
+    text-align: center;
+  }
+  h1{
+    font-size:45px;
+    margin-top: 0;
+  }
+  .subheading {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin: 10px 0 0;
+  }
+  .form-row{
+    margin :10px;
+    margin-left: 70px;
+    margin-top: 50px;
+    width: 600px;
+  }
+  .site-title{
+    font-family: 'Nanum Gothic Coding';
+    font-weight: 400;
+  }
+  .chart-title{
+    font-family: 'Nanum Gothic';
+    font-weight: 800;
+    color: #3399ff;
+  }
+  .chart-font{
+    font-family:'Poor Story';
+    font-weight: 400;
+    font-size:25px;
+  }
+  .sub-title{
+    font-family:'Nanum Gothic Coding';
+    font-weight: 400;
+    font-size: 25px;
+  }
+  .mid-title{
+    font-family:'Nanum Gothic Coding';
+    font-weight: 400;
+    font-size: 45px;
+  }
+
+
+  
+  .paymentWrap {
+    margin: auto;
+    width: 100%;
+    /* height: 200px; */
+    /* padding: 50px; */
+    /* height: 200px;     */
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 38%;
+    margin-right: 38%; 
+    /* padding-left: 500px;
+    padding-right: 500px;
+    padding-top: 60px;
+    padding-bottom: 60px; */
+    /* position: absolute; */
+    /* height: 200px; */
+  
+  }
+  
+  .paymentBtnGroup{
+    width: 500px;
+    /* padding: */
+  }
+  .paymentWrap .paymentBtnGroup {
+    
+    margin: auto;
+    height: 70px;
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    box-shadow: none;
+    position: relative;
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod.active {
+    outline: none !important;
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+    border-color: #4cd264;
+    outline: none !important;
+    box-shadow: 0px 3px 22px 0px #7b7b7b;
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid transparent;
+    transition: all 0.5s;
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method.visa {
+    background-image: url("http://cliimage.commutil.kr/phpwas/restmb_allidxmake.php?idx=3&simg=2018010515395107733d307c1aeb0121131233211.jpg")
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method.master-card {
+    background-image: url("https://file.namu.moe/file/25675e0642aa8b2204ee94c76be58fc8e7674fc18bdd5c5a966dff7b348327d0")}
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method.amex {
+    background-image: url("http://www.paymentscardsandmobile.com/wp-content/uploads/2015/08/Amex-icon.jpg");
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method.vishwa {
+    background-image: url("http://i.imgur.com/VkiM7PL.jpg");
+  }
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method.ez-cash {
+    background-image: url("http://www.busbooking.lk/img/carousel/BusBooking.lk_ezCash_offer.png");
+  }
+  
+  
+  .paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+    border-color: #4cd264;
+    outline: none !important;
+  }
+
+  #wrapper #content-wrapper {
+    background-color: #f8f9fc;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /*search box css start here*/
+.search-sec{
+  padding: 2rem;
+}
+.search-slt{
+  display: block;
+  width:570px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+.search-default{
+  display: block;
+  width:100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+
+.wrn-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+@media (min-width: 992px){
+  .search-sec{
+      position: relative;
+      top: -24px;
+      background: rgba(26, 70, 104, 0.51);
+  }
+}
+
+@media (max-width: 992px){
+  .search-sec{
+      background: #1A4668;
+  }
+}
+
+
+
+.tops{
+  margin-top: 50px;
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.containers{
+    padding: 10%;
+    text-align: center;
+}
+#custom-search-input {
+    margin:0;
+    margin-top: 10px;
+    padding: 0;
+}
+ 
+#custom-search-input .search-query {
+    width:100%;
+    padding-right: 3px;
+    padding-left: 15px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 0;
+}
+ 
+#custom-search-input button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: absolute;
+    right:0;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color:#D9230F;
+    cursor: unset;
+    z-index: 2;
+}
+ 
+.search-query:focus{
+    z-index: 0;   
+}
+
+hr.divider {
+  max-width: 3.25rem;
+  border-width: .2rem;
+  border-color: #f4623a;
+}
+
+.mb-4, .my-4 {
+  margin-bottom: 1.5rem!important;
+  margin-top: 1.5rem!important;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
+
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.card-bodys {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  /* padding: 1.25rem; */
+  height: 824px;
+  padding-top: 110px;
+  padding-bottom :40px;
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+.max-widths{
+  width: 300px;
+}
+
+.help-tip{
+    position: absolute;
+    bottom: 9px;
+    right: 18px;
+    text-align: center;
+    background-color: #BCDBEA;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 26px;
+    cursor: default;
+}
+
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+}
+
+.help-tip:hover p{
+    display:block;
+    transform-origin: 100% 0%;
+
+    -webkit-animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{    /* The tooltip */
+    display: none;
+    text-align: left;
+    background-color: #1E2021;
+    padding: 6px;
+    width: 500px;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    right: -4px;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+    position: absolute;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    right:10px;
+    top:-12px;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+    width:100%;
+    height:100%;
+    content:'';
+    position: absolute;
+    top:-40px;
+    left:0;
+}
+
+/* CSS animation */
+
+@-webkit-keyframes fadeIn {
+    0% { 
+        opacity:0; 
+        transform: scale(0.6);
+    }
+
+    100% {
+        opacity:100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:100%; }
+}
+
+
+.out{
+  height: 974px;
+}
+
+
+.searchbars{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+  }
+
+  .search_input{
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
+
+  .searchbars:hover > .search_input{
+  padding: 0 10px;
+  width: 450px;
+  caret-color:red;
+  transition: width 0.4s linear;
+  }
+
+  .searchbars:hover > .search_icon{
+  background: white;
+  color: #e74c3c;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:white;
+  }
+
+  .text-primary {
+    color: #fed136 !important;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  h2.section-heading {
+    /* font-family:"Nanum Gothic"; */
+    font-size: 60px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  h3.section-subheading {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 75px;
+    text-transform: none;
+    font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
